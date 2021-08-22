@@ -19,21 +19,24 @@ class MainActivity : AppCompatActivity() {
 
         "val textView = findViewById<TextView>(R.id.Name)"
         val vessels = findViewById<Button>(R.id.btnVessels)
-        val ports = findViewById<Button>(R.id.btnPorts)
-        val maps = findViewById<Button>(R.id.btnMap)
+        val port = findViewById<Button>(R.id.btnPorts)
+        val map = findViewById<Button>(R.id.btnMap)
 
         val queue = Volley.newRequestQueue(this)
         val url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/vessel"
 
 
         vessels.setOnClickListener{
-            val intent = Intent(this, vessels::class.java).apply
+            val intent = Intent(this, Vessels::class.java).apply{}
+            startActivityForResult(intent,0)
         }
-        ports.setOnClickListener{
-            val intent = Intent(this, ports::class.java).apply
+        port.setOnClickListener{
+            val intent = Intent(this, ports::class.java).apply{}
+            startActivityForResult(intent,0)
         }
-        maps.setOnClickListener{
-            val intent = Intent(this, maps::class.java).apply
+        map.setOnClickListener{
+            val intent = Intent(this, maps::class.java).apply{}
+            startActivityForResult(intent,0)
         }
     /*    val stringRequest = StringRequest(
                 Request.Method.GET, url,
@@ -47,12 +50,7 @@ class MainActivity : AppCompatActivity() {
        " queue.add(stringRequest)"
 
 
-        ports.setOnClickListener{
 
-        }
-        maps.setOnClickListener{
-
-        }
 }
 }
 
