@@ -17,17 +17,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         "val textView = findViewById<TextView>(R.id.Name)"
+
+        /* Gets Id of widgets (Buttons) */
         val vessels = findViewById<Button>(R.id.btnVessels)
         val port = findViewById<Button>(R.id.btnPorts)
         val map = findViewById<Button>(R.id.btnMap)
 
+
         val queue = Volley.newRequestQueue(this)
         val url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/vessel"
 
-
+        /* Listners for buttons  */
         vessels.setOnClickListener{
+            /* stores info to be sent to activity */
             val intent = Intent(this, Vessels::class.java).apply{}
+            /* passes in info and starts activity */
             startActivityForResult(intent,0)
         }
         port.setOnClickListener{
