@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val vessels = findViewById<Button>(R.id.btnVessels)
         val port = findViewById<Button>(R.id.btnPorts)
         val map = findViewById<Button>(R.id.btnMap)
+        val region = findViewById<Button>(R.id.btnRegion)
 
 
         val queue = Volley.newRequestQueue(this)
@@ -43,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         }
         map.setOnClickListener{
             val intent = Intent(this, maps::class.java).apply{}
+            startActivityForResult(intent,0)
+        }
+        region.setOnClickListener{
+            val intent = Intent(this, Regions::class.java).apply{}
             startActivityForResult(intent,0)
         }
     /*    val stringRequest = StringRequest(
