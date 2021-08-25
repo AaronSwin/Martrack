@@ -1,3 +1,3 @@
 package com.example.test
 
-data class Vessel()
+data class Vessel(var name:String)

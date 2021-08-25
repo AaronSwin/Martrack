@@ -1,3 +1,3 @@
 package com.example.test
 
-data class Port()
+data class Port(var name:String)
