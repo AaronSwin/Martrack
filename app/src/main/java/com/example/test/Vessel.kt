@@ -1,3 +1,5 @@
 package com.example.test
 
-data class Vessel(var name:String)
+import java.util.*
+
+data class Vessel(var location:String,var vesselID:String, var status:String,var date:Date, var name:String, var Containers:Int)
