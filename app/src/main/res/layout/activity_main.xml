@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/backGrey">
+    android:background="@drawable/background_image"
+    >
 
     <Button
         android:id="@+id/btnVessels"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="60dp"
         android:layout_marginTop="160dp"
+        android:alpha="0.75"
         android:background="@drawable/button_background"
         android:text="Vessels"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,6 +26,7 @@
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:alpha="0.75"
         android:background="@drawable/button_background"
         android:text="Ports"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +53,7 @@
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="49dp"
+        android:alpha="0.75"
         android:background="@drawable/button_background"
         android:text="Regions"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,6 +67,7 @@
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="49dp"
+        android:alpha="0.75"
         android:background="@drawable/button_background"
         android:text="Map"
         app:layout_constraintBottom_toBottomOf="parent"
