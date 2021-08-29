@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        Storage.loadall(this)
 
-        "val textView = findViewById<TextView>(R.id.Name)"
 
         /* Gets Id of widgets (Buttons) */
         val vessels = findViewById<Button>(R.id.btnVessels)

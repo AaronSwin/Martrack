@@ -6,18 +6,19 @@
         <entry key="..\:/School Work/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_main.xml" value="0.3555253623188406" />
         <entry key="..\:/School Work/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_maps.xml" value="0.3555253623188406" />
         <entry key="..\:/School Work/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_ports.xml" value="0.3555253623188406" />
+        <entry key="..\:/School Work/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_regions.xml" value="0.20520833333333333" />
         <entry key="..\:/School Work/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_vessels.xml" value="0.3555253623188406" />
-        <entry key="..\:/Users/Eldo/AndroidStudioProjects/Martrack/app/src/main/res/drawable/app_background.xml" value="0.3536458333333333" />
+        <entry key="..\:/School Work/OLd/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_main.xml" value="0.34556159420289856" />
+        <entry key="..\:/School Work/OLd/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_maps.xml" value="0.33" />
+        <entry key="..\:/School Work/OLd/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_ports.xml" value="0.34556159420289856" />
+        <entry key="..\:/School Work/OLd/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_regions.xml" value="0.34556159420289856" />
+        <entry key="..\:/School Work/OLd/Mobile/Tasks/Martrack/app/src/main/res/layout/activity_vessels.xml" value="0.34556159420289856" />
         <entry key="..\:/Users/Eldo/AndroidStudioProjects/Martrack/app/src/main/res/drawable/button_background.xml" value="0.590625" />
         <entry key="..\:/Users/Eldo/AndroidStudioProjects/Martrack/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
-        <entry key="..\:/Users/Eldo/AndroidStudioProjects/Martrack/app/src/main/res/layout/activity_maps.xml" value="0.5744791666666667" />
-        <entry key="..\:/Users/Eldo/AndroidStudioProjects/Martrack/app/src/main/res/layout/activity_ports.xml" value="0.5744791666666667" />
-        <entry key="..\:/Users/Eldo/AndroidStudioProjects/Martrack/app/src/main/res/layout/activity_regions.xml" value="0.5744791666666667" />
-        <entry key="..\:/Users/Eldo/AndroidStudioProjects/Martrack/app/src/main/res/layout/activity_vessels.xml" value="0.5744791666666667" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
