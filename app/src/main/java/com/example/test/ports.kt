@@ -13,11 +13,16 @@ class ports : AppCompatActivity(), OnPortItemClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ports)
+
+
         val list = findViewById<RecyclerView>(R.id.viewPort)
+
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(viewPort)
+
         list.adapter = invAdaptePort(this)
         list.layoutManager = LinearLayoutManager(this)
+
     }
     private val itemTouchHelperCallback =
         object :
@@ -43,7 +48,7 @@ class ports : AppCompatActivity(), OnPortItemClickListener{
 
         }
 
-    override fun onItemClick(item: Int, position: Int) {
+    override fun onItemClick(port: Port, position: Int) {
         TODO("Not yet implemented")
     }
 }

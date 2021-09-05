@@ -24,7 +24,7 @@ import java.security.AccessControlContext
 
 object Storage {
 
-    var portList = mutableListOf<Port>()
+    var portList = ArrayList<Port>()
     var vesselList = mutableListOf<Vessel>()
     var regionList = mutableListOf<Region>()
     //Adds Vessel to list
@@ -49,7 +49,7 @@ object Storage {
         loadPort(context)
         loadRegion(context)
     }
-    fun Portparse(response: MutableList<Port>){
+    fun Portparse(response: ArrayList<Port>){
         this.portList = response
     }
     fun Vesselparse(response: MutableList<Vessel>){
@@ -126,8 +126,6 @@ object Storage {
             }
         })
     }
-
-
 }
 
 class vesselList(val vessels: List<Vessel>)
