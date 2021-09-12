@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_ports.*
 import kotlinx.android.synthetic.main.activity_vessels.*
 
 class Vessels : AppCompatActivity(), OnVesselItemClickListener {
@@ -14,9 +15,12 @@ class Vessels : AppCompatActivity(), OnVesselItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vessels)
 
+
         val list = findViewById<RecyclerView>(R.id.viewVessel)
+
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        itemTouchHelper.attachToRecyclerView(viewVessel)
+        itemTouchHelper.attachToRecyclerView(viewPort)
+
         list.adapter = invAdapteVessel(this)
         list.layoutManager = LinearLayoutManager(this)
     }
@@ -44,7 +48,7 @@ class Vessels : AppCompatActivity(), OnVesselItemClickListener {
 
         }
 
-    override fun onItemClick(item: Int, position: Int) {
+    override fun onItemClick(vessel: Vessel, position: Int) {
         TODO("Not yet implemented")
     }
 }

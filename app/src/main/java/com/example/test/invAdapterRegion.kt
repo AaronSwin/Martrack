@@ -5,24 +5,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import java.text.NumberFormat
-import java.util.*
 
-class invAdaptePort(var clickListener: OnPortItemClickListener): RecyclerView.Adapter<invAdaptePort.ViewHolder>() {
+class invAdapterRegion(var clickListener: OnRegionItemClickListener): RecyclerView.Adapter<invAdapterRegion.ViewHolder>() {
 
 
     inner class ViewHolder(val v: View): RecyclerView.ViewHolder(v) {
-        val PortName = v.findViewById<TextView>(R.id.txtRecylerName)
-        val PortNumber = v.findViewById<TextView>(R.id.txtRecyclerPrice)
+        val RegionName = v.findViewById<TextView>(R.id.txtRecylerName)
+        val RegionNumber = v.findViewById<TextView>(R.id.txtRecyclerPrice)
 
-        fun bind(port: Port,action: OnPortItemClickListener){
+        fun bind(region: Region,action: OnRegionItemClickListener){
 
-
-            PortName.text = port.name
-            PortNumber.text = port.portID
+            RegionName.text = region.name
+            RegionNumber.text = region.regionId.toString()
 
             v.setOnClickListener {
-                action.onItemClick(port,adapterPosition)
+                action.onItemClick(region,adapterPosition)
             }
         }
     }
@@ -31,22 +28,22 @@ class invAdaptePort(var clickListener: OnPortItemClickListener): RecyclerView.Ad
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater
-               //Name of layout used for recycler view
+            //Name of layout used for recycler view
             .inflate(R.layout.inventory_l_layout,parent,false) as View
         return ViewHolder(view)
     }
 
     override fun getItemCount():Int{
-        return Storage.PortList.size
+        return Storage.RegionList.size
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.bind(Storage.PortList[position],clickListener)
+        holder.bind(Storage.RegionList[position],clickListener)
     }
 
 }
 
-interface OnPortItemClickListener{
+interface OnRegionItemClickListener{
     /*fix int */
-    fun onItemClick(port: Port , position: Int)
+    fun onItemClick(region: Region , position: Int)
 }
