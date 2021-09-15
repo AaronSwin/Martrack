@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MarTrack</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiZG9yaWRvIiwiYSI6ImNrdGxiN2pjcjBmYmkydXBlb2ZlbnV3eHEifQ.2NMXWSwiKMPkPhNh08RMPA</string>
 </resources>
