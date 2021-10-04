@@ -1,11 +1,13 @@
 package com.example.test
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_ports.*
+import kotlinx.android.synthetic.main.activity_portview.*
 import kotlinx.android.synthetic.main.activity_vessels.*
 import kotlinx.android.synthetic.main.activity_vessels.viewVessel
 
@@ -22,6 +24,8 @@ class ports : AppCompatActivity(), OnPortItemClickListener{
 
         list.adapter = invAdaptePort(this)
         list.layoutManager = LinearLayoutManager(this)
+
+
 
     }
     private val itemTouchHelperCallback =
@@ -49,6 +53,14 @@ class ports : AppCompatActivity(), OnPortItemClickListener{
         }
 
     override fun onItemClick(port: Port, position: Int) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, portview::class.java)
+
+        intent.putExtra("portid",port.portId)
+        intent.putExtra("cranes",port.gantryCranes.toString())
+        intent.putExtra("name",port.name.toString())
+        intent.putExtra("portStay",port.portStay.toString())
+        intent.putExtra("regionID",port.regionId)
+
+        startActivity(intent)
     }
 }

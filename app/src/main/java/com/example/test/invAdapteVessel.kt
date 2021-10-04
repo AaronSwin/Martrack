@@ -18,7 +18,7 @@ class invAdapteVessel(var clickListener: OnVesselItemClickListener): RecyclerVie
         fun bind(vessel: Vessel,action: OnVesselItemClickListener){
 
             VesselName.text = vessel.name
-            VesselNumber.text = vessel.vesselId
+            VesselNumber.text = vessel.vesselId.toString()
 
             v.setOnClickListener {
                 action.onItemClick(vessel,adapterPosition)

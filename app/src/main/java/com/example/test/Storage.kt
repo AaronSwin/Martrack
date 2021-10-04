@@ -2,11 +2,15 @@ package com.example.test
 
 
 import android.content.Context
+import android.os.Parcelable
 import com.google.gson.GsonBuilder
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
+import kotlinx.android.parcel.Parcelize
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
+
+
 
 
 object Storage {
@@ -14,36 +18,28 @@ object Storage {
     var PortList = mutableListOf<Port>()
     var VesselList = mutableListOf<Vessel>()
     var RegionList = mutableListOf<Region>()
-    //Adds Vessel to list
-    fun Add(vessel: Vessel) {
-        VesselList.add(vessel)
-    }
-    //Adds Port to list
-    fun Add(port: Port){
-        PortList.add(port)
-    }
-    //Adds region to list
-    fun Add(region: Region){
-        RegionList.add(region)
-    }
-    //gets count of each list in array
-    fun Count():Array<Int>{
-        return arrayOf(PortList.size, VesselList.size, RegionList.size)
-    }
 
+    fun PortSearch(search: String): Port? {
+        PortList.forEach{
+            if(it.portId ==search)
+                return it
+        }
+        return null
+    }
+    fun VesselSearch(search: String): Vessel?{
+        VesselList.forEach{
+            if(it.vesselId == search.toInt())
+                return it
+        }
+        return null
+    }
+    fun RegionSearch(){
+
+    }
     fun loadall(context: Context){
         loadVessel(context)
         loadPort(context)
         loadRegion(context)
-    }
-    fun Portparse(response: ArrayList<Port>){
-        this.PortList = response
-    }
-    fun Vesselparse(response: MutableList<Vessel>){
-        this.VesselList = response
-    }
-    fun Regionparse(response: MutableList<Region>){
-        this.RegionList = response
     }
 
     fun loadVessel(context: Context){
@@ -61,6 +57,27 @@ object Storage {
                 val vesselz: List<Vessel> = gson.fromJson(body, Array<Vessel>::class.java).toList()
                 VesselList = vesselz as MutableList<Vessel>;
 
+            }
+
+
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to execute request")
+            }
+        })
+    }
+
+    fun updateVessel(context: Context,json:String,Url: String){
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url(Url)
+            .put(json.toRequestBody("application/json".toMediaTypeOrNull()))
+            .build()
+
+        client.newCall(request).enqueue(object : Callback{
+            override fun onResponse(call: Call, response: okhttp3.Response) {
+                val txt = response
+                println("Succesful")
             }
 
 
@@ -114,9 +131,11 @@ object Storage {
 }
 
 class vesselList(val vessels: List<Vessel>)
-class Vessel(var location:String,var vesselId:String, var status:String,var other:String, var name:String, var noContainers:Int)
+@Parcelize
+class Vessel(var location:String,var vesselId:Int, var status:String,var other:String, var name:String, var noContainers:Int): Parcelable
 class PortList(val ports: List<Port>)
-class Port(var portID:String, var gantryCranes:Int, var name:String, var portStay:Double, var regionID:String)
+@Parcelize
+data class Port(var portId:String, var gantryCranes:Int, var name:String, var portStay:Double, var regionId:String): Parcelable
 class RegionList(val regions: List<Vessel>)
 class Region(var name:String,var regionId:Int)
 

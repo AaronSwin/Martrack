@@ -49,7 +49,16 @@ class Vessels : AppCompatActivity(), OnVesselItemClickListener {
         }
 
     override fun onItemClick(vessel: Vessel, position: Int) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, vesselview::class.java)
+
+        intent.putExtra("location",vessel.location)
+        intent.putExtra("vesselId",vessel.vesselId.toString())
+        intent.putExtra("status",vessel.status)
+        intent.putExtra("other",vessel.other.toString())
+        intent.putExtra("name",vessel.name.toString())
+        intent.putExtra("noContainers",vessel.noContainers.toString())
+
+        startActivity(intent)
     }
 }
 
