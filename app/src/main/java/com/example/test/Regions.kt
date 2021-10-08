@@ -1,11 +1,13 @@
 package com.example.test
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_ports.*
+import kotlinx.android.synthetic.main.activity_vesselview.*
 
 class Regions : AppCompatActivity(), OnRegionItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +48,11 @@ class Regions : AppCompatActivity(), OnRegionItemClickListener {
         }
 
     override fun onItemClick(region: Region, position: Int) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, regionView::class.java)
+
+        intent.putExtra("id",region.regionId.toString())
+        intent.putExtra("name",region.name.toString())
+
+        startActivity(intent)
     }
 }

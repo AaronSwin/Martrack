@@ -19,7 +19,7 @@ class invAdaptePort(var clickListener: OnPortItemClickListener): RecyclerView.Ad
 
 
             PortName.text = port.name
-            PortNumber.text = port.portId
+            PortNumber.text = port.portId.toString()
 
             v.setOnClickListener {
                 action.onItemClick(port,adapterPosition)

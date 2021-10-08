@@ -63,7 +63,7 @@
             android:text="Name:" />
 
         <EditText
-            android:id="@+id/txtEditName"
+            android:id="@+id/txtEditPortName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5"

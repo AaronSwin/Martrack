@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".regionView"
+            android:exported="true" />
+        <activity
+            android:name=".editRegion"
+            android:exported="true" />
+        <activity
             android:name=".editVessel"
             android:exported="true" />
         <activity

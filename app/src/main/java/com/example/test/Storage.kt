@@ -21,7 +21,7 @@ object Storage {
 
     fun PortSearch(search: String): Port? {
         PortList.forEach{
-            if(it.portId ==search)
+            if(it.portId ==search.toString().toInt())
                 return it
         }
         return null
@@ -33,8 +33,12 @@ object Storage {
         }
         return null
     }
-    fun RegionSearch(){
-
+    fun RegionSearch(search: String): Region?{
+        RegionList.forEach{
+            if(it.regionId == search.toInt())
+                return it
+        }
+        return null
     }
     fun loadall(context: Context){
         loadVessel(context)
@@ -88,6 +92,29 @@ object Storage {
         })
     }
 
+    fun deleteVessel(){
+        val Url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/vessel/566453"
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url(Url)
+            .delete()
+            .build()
+
+        client.newCall(request).enqueue(object : Callback{
+            override fun onResponse(call: Call, response: okhttp3.Response) {
+                val txt = response
+                println("Succesful")
+            }
+
+
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed to execute request")
+            }
+        })
+
+    }
+
     fun loadPort(context: Context){
         val url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/port"
         val request = okhttp3.Request.Builder().url(url).build()
@@ -135,7 +162,7 @@ class vesselList(val vessels: List<Vessel>)
 class Vessel(var location:String,var vesselId:Int, var status:String,var other:String, var name:String, var noContainers:Int): Parcelable
 class PortList(val ports: List<Port>)
 @Parcelize
-data class Port(var portId:String, var gantryCranes:Int, var name:String, var portStay:Double, var regionId:String): Parcelable
+data class Port(var portId:Int, var gantryCranes:Int, var name:String, var portStay:Int, var regionId:String): Parcelable
 class RegionList(val regions: List<Vessel>)
-class Region(var name:String,var regionId:Int)
+data class Region(var regionId:Int, var name:String )
 

@@ -32,7 +32,8 @@ class editVessel : AppCompatActivity() {
                 vessel?.noContainers = txtEditContainers.text.toString().toInt()
                 vessel?.other = txtEditOther.text.toString()
                 vessel?.status = txtEditStatus.text.toString()
-                val url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/vessel/71314113"
+                //val url = "https://martrack.free.beeceptor.com"
+                val url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/vessel/" + txtEditVesselId.toString()
                 Storage.updateVessel(this,json(),url)
             }
         }

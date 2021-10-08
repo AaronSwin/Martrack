@@ -55,7 +55,7 @@ class ports : AppCompatActivity(), OnPortItemClickListener{
     override fun onItemClick(port: Port, position: Int) {
         val intent = Intent(this, portview::class.java)
 
-        intent.putExtra("portid",port.portId)
+        intent.putExtra("portid",port.portId.toString())
         intent.putExtra("cranes",port.gantryCranes.toString())
         intent.putExtra("name",port.name.toString())
         intent.putExtra("portStay",port.portStay.toString())
