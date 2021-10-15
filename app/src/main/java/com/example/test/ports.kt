@@ -41,16 +41,31 @@ class ports : AppCompatActivity(), OnPortItemClickListener{
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //Deletes Item
                 if(direction == 8){
-                    "Check custom project "
+                    val Url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/port/" + Storage.PortList.elementAt(viewHolder.adapterPosition).portId.toString()
+
+                    Storage.deleteVessel(Url)
+                    Storage.PortList.removeAt(viewHolder.adapterPosition)
+
+                    viewPort.adapter?.notifyDataSetChanged()
                 }
                 //Edits Item
                 else if(direction == 4)
                 {
-                    "Check custom project "
+                    val Port = Storage.PortList.elementAt(viewHolder.adapterPosition)
+                    val intent = Intent(this@ports,editPort::class.java)
+
+                    intent.putExtra("portid", Port.portId.toString())
+                    intent.putExtra("cranes", Port.gantryCranes.toString())
+                    intent.putExtra("name", Port.name.toString())
+                    intent.putExtra("portStay", Port.portStay.toString())
+                    intent.putExtra("regionID", Port.regionId.toString())
+
+                    startActivity(intent)
+                }
                 }
             }
 
-        }
+
 
     override fun onItemClick(port: Port, position: Int) {
         val intent = Intent(this, portview::class.java)

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_ports.*
 import kotlinx.android.synthetic.main.activity_vessels.*
+import kotlinx.android.synthetic.main.activity_vesselview.*
 
 class Vessels : AppCompatActivity(), OnVesselItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,7 @@ class Vessels : AppCompatActivity(), OnVesselItemClickListener {
         val list = findViewById<RecyclerView>(R.id.viewVessel)
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        itemTouchHelper.attachToRecyclerView(viewPort)
+        itemTouchHelper.attachToRecyclerView(viewVessel)
 
         list.adapter = invAdapteVessel(this)
         list.layoutManager = LinearLayoutManager(this)
@@ -37,12 +38,27 @@ class Vessels : AppCompatActivity(), OnVesselItemClickListener {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 //Deletes Item
                 if(direction == 8){
-                    "Check custom project "
+                    val Url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/vessel/" + Storage.VesselList.elementAt(viewHolder.adapterPosition).vesselId.toString()
+
+                    Storage.deleteVessel(Url)
+                    Storage.VesselList.removeAt(viewHolder.adapterPosition)
+
+                    viewVessel.adapter?.notifyDataSetChanged()
                 }
                 //Edits Item
                 else if(direction == 4)
                 {
-                    "Check custom project "
+                    val Vessel = Storage.VesselList.elementAt(viewHolder.adapterPosition)
+                    val intent = Intent(this@Vessels,editVessel::class.java)
+
+                    intent.putExtra("location",Vessel.location.toString())
+                    intent.putExtra("vesselId",Vessel.vesselId.toString())
+                    intent.putExtra("status",Vessel.status.toString())
+                    intent.putExtra("other",Vessel.other.toString())
+                    intent.putExtra("name",Vessel.name.toString())
+                    intent.putExtra("noContainers",Vessel.noContainers.toString())
+
+                    startActivity(intent)
                 }
             }
 

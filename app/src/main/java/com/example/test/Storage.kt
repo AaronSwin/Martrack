@@ -59,8 +59,9 @@ object Storage {
 
 
                 val vesselz: List<Vessel> = gson.fromJson(body, Array<Vessel>::class.java).toList()
-                VesselList = vesselz as MutableList<Vessel>;
-
+                for(Vessel in vesselz){
+                    VesselList.add(Vessel)
+                }
             }
 
 
@@ -92,8 +93,8 @@ object Storage {
         })
     }
 
-    fun deleteVessel(){
-        val Url = "https://3wu7u4alu9.execute-api.us-east-1.amazonaws.com/martrack/vessel/566453"
+    fun deleteVessel(Url: String){
+
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(Url)
@@ -127,7 +128,9 @@ object Storage {
 
                 val gson = GsonBuilder().create()
                 val Portz: List<Port> = gson.fromJson(body, Array<Port>::class.java).toList()
-                PortList = Portz as MutableList<Port>
+                for(Port in Portz){
+                    PortList.add(Port)
+                }
             }
 
             override fun onFailure(call: Call, e: IOException) {
@@ -147,7 +150,9 @@ object Storage {
 
                 val gson = GsonBuilder().create()
                 val Regionz: List<Region> = gson.fromJson(body, Array<Region>::class.java).toList()
-                RegionList = Regionz as MutableList<Region>
+                for(Region in Regionz){
+                    RegionList.add(Region)
+                }
             }
 
             override fun onFailure(call: Call, e: IOException) {
@@ -157,12 +162,10 @@ object Storage {
     }
 }
 
-class vesselList(val vessels: List<Vessel>)
+
 @Parcelize
 class Vessel(var location:String,var vesselId:Int, var status:String,var other:String, var name:String, var noContainers:Int): Parcelable
-class PortList(val ports: List<Port>)
 @Parcelize
 data class Port(var portId:Int, var gantryCranes:Int, var name:String, var portStay:Int, var regionId:String): Parcelable
-class RegionList(val regions: List<Vessel>)
 data class Region(var regionId:Int, var name:String )
 
